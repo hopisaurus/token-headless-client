@@ -84,7 +84,8 @@ class TokenHeadlessClient {
         final String username = wallet.getAddress();
         final boolean voice = false;
         String settingsPath = config.getStore();
-        Manager m = new Manager(username, settingsPath, config.getServer(), db);
+        String trustStore = config.getTrust_store();
+        Manager m = new Manager(username, settingsPath, config.getServer(), db, trustStore);
 
 
         // -- redis

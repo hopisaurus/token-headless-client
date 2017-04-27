@@ -6,9 +6,15 @@ import java.io.InputStream;
 
 class WhisperTrustStore implements TrustStore {
 
+    private final String trustStoreName;
+
+    public WhisperTrustStore(String trustStoreName) {
+        this.trustStoreName = trustStoreName;
+    }
+
     @Override
     public InputStream getKeyStoreInputStream() {
-        return WhisperTrustStore.class.getResourceAsStream("token.store");
+        return WhisperTrustStore.class.getResourceAsStream(trustStoreName);
     }
 
     @Override

@@ -82,7 +82,6 @@ public class Manager {
     private final static Tika tika = new Tika();
 
     private final String URL;
-    private final static TrustStore TRUST_STORE = new WhisperTrustStore();
     private final SignalServiceUrl[] serviceUrls;
 
     public final static String PROJECT_NAME = Manager.class.getPackage().getImplementationTitle();
@@ -118,10 +117,10 @@ public class Manager {
 
     private Postgres db;
 
-    public Manager(String username, String settingsPath, String server, Postgres db) {
+    public Manager(String username, String settingsPath, String server, Postgres db, String trustStore) {
         this.db = db;
         URL = server;
-        serviceUrls = new SignalServiceUrl[]{new SignalServiceUrl(URL, TRUST_STORE)};
+        serviceUrls = new SignalServiceUrl[]{new SignalServiceUrl(URL, new WhisperTrustStore(trustStore))};
 
         this.username = username;
         this.settingsPath = settingsPath;
