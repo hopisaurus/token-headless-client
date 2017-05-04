@@ -9,7 +9,7 @@ apply plugin: 'maven'
 mainClassName = 'com.bakkenbaeck.token.headless.TokenHeadlessClient'
 
 group = 'com.github.tokenbrowser'
-version '0.1.0'
+version '0.1.1'
 
 compileJava.options.encoding = 'UTF-8'
 
