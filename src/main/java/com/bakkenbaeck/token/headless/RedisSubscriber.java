@@ -44,12 +44,17 @@ class RedisSubscriber extends JedisPubSub {
                 ArrayList<String> attachments = new ArrayList<String>();
                 if (sofa.has("attachments")) {
                     for (int i = 0; i < sofa.get("attachments").size(); i++) {
-                        String url = "attachments/"+sofa.get("attachments").get(i).get("url").asText();
-                        Boolean exists = new File(url).exists();
-                        if (exists) {
-                            attachments.add(url);
+                        JsonNode urlNode = sofa.get("attachments").get(i).get("url");
+                        if (urlNode != null) {
+                            String url = "attachments/" + urlNode.asText();
+                            Boolean exists = new File(url).exists();
+                            if (exists) {
+                                attachments.add(url);
+                            } else {
+                                System.out.println("Attachment " + url + " does not exist");
+                            }
                         } else {
-                            System.out.println("Attachment "+url+" does not exist");
+                            System.out.println("Attachment is missing the 'url' property");
                         }
                     }
                 }
