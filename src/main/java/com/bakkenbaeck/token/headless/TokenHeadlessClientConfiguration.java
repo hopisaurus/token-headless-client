@@ -8,7 +8,7 @@ public final class TokenHeadlessClientConfiguration {
     private String token_id_service_url;
     private String seed;
     private String store;
-    private String trust_store;
+    private String stage;
     private String username;
     private String name;
     private String avatar;
@@ -47,12 +47,12 @@ public final class TokenHeadlessClientConfiguration {
         this.store = store;
     }
 
-    public String getTrust_store() {
-        return trust_store;
+    public String getStage() {
+        return (stage != null) ? stage : System.getenv("STAGE");
     }
 
-    public void setTrust_store(String trust_store) {
-        this.trust_store = trust_store;
+    public void setStage(String stage) {
+        this.stage = stage;
     }
 
     public String getUsername() {

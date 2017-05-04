@@ -117,10 +117,10 @@ public class Manager {
 
     private Postgres db;
 
-    public Manager(String username, String settingsPath, String server, Postgres db, String trustStore) {
+    public Manager(String username, String settingsPath, String server, Postgres db, String trustStoreName) {
         this.db = db;
         URL = server;
-        serviceUrls = new SignalServiceUrl[]{new SignalServiceUrl(URL, new WhisperTrustStore(trustStore))};
+        serviceUrls = new SignalServiceUrl[]{new SignalServiceUrl(URL, new WhisperTrustStore(trustStoreName))};
 
         this.username = username;
         this.settingsPath = settingsPath;
