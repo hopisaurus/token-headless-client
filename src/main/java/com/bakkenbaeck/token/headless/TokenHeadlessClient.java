@@ -84,7 +84,7 @@ class TokenHeadlessClient {
         final String username = wallet.getAddress();
         final boolean voice = false;
         String settingsPath = config.getStore();
-        String trustStoreName = (config.getStage().equals("development")) ? "heroku.store" : "token.store";
+        String trustStoreName = ("development".equals(config.getStage())) ? "heroku.store" : "token.store";
         Manager m = new Manager(username, settingsPath, config.getServer(), db, trustStoreName);
 
 
